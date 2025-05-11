@@ -1,0 +1,1956 @@
+BOLT-INFO: shared object or position-independent executable detected
+BOLT-INFO: Target architecture: x86_64
+BOLT-INFO: BOLT version: <unknown>
+BOLT-INFO: first alloc address is 0x0
+BOLT-INFO: creating new program header table at address 0x200000, offset 0x200000
+BOLT-INFO: enabling lite mode
+BOLT-WARNING: ignoring symbol __bss_start at 0x501c, which lies outside .bss
+BOLT-WARNING: ignoring symbol __TMC_END__ at 0x5020, which lies outside .data
+Binary Function "_init" after disassembly {
+  Number      : 1
+  State       : disassembled
+  Address     : 0x1000
+  Size        : 0x1b
+  MaxSize     : 0x1b
+  Offset      : 0x1000
+  Section     : .init
+  Orc Section : .local.text._init
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB00:
+    00000000: 	endbr64
+    00000004: 	subq	$0x8, %rsp
+    00000008: 	movq	DATAat0x4fe8(%rip), %rax
+    0000000f: 	testq	%rax, %rax
+    00000012: 	je	.Ltmp0 # Offset: 18
+    00000014: 	callq	*%rax # Offset: 20
+.Ltmp0:
+    00000016: 	addq	$0x8, %rsp
+    0000001a: 	retq # Offset: 26
+DWARF CFI Instructions:
+    <empty>
+End of Function "_init"
+
+Binary Function "main" after disassembly {
+  Number      : 2
+  State       : disassembled
+  Address     : 0x1200
+  Size        : 0x216
+  MaxSize     : 0x220
+  Offset      : 0x1200
+  Section     : .text
+  Orc Section : .local.text.main
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB01:
+    00000000: 	endbr64
+    00000004: 	pushq	%r14
+    00000006: 	pushq	%r13
+    00000008: 	pushq	%r12
+    0000000a: 	pushq	%rbp
+    0000000b: 	pushq	%rbx
+    0000000c: 	testl	%edi, %edi
+    0000000e: 	jle	.Ltmp1 # Offset: 14
+    00000014: 	leal	-0x1(%rdi), %eax
+    00000017: 	movl	%edi, %r13d
+    0000001a: 	movq	%rsi, %r14
+    0000001d: 	movq	%rsi, %rbx
+    00000020: 	leaq	0x8(%rsi,%rax,8), %r12
+    00000025: 	leaq	DATAat0x31a7(%rip), %rbp
+    0000002c: 	nopl	(%rax) # Size: 4
+.Ltmp2:
+    00000030: 	movq	(%rbx), %rdx
+    00000033: 	movq	%rbp, %rsi
+    00000036: 	movl	$0x1, %edi
+    0000003b: 	xorl	%eax, %eax
+    0000003d: 	addq	$0x8, %rbx
+    00000041: 	callq	__printf_chk@PLT # Offset: 65
+    00000046: 	cmpq	%r12, %rbx
+    00000049: 	jne	.Ltmp2 # Offset: 73
+    0000004b: 	movl	$0xa, %edi
+    00000050: 	callq	putchar@PLT # Offset: 80
+    00000055: 	cmpl	$0x1, %r13d
+    00000059: 	jg	.Ltmp3 # Offset: 89
+.Ltmp6:
+    0000005f: 	movsd	init_value(%rip), %xmm0
+    00000067: 	andpd	DATAat0x32e0(%rip), %xmm0
+    0000006f: 	leaq	data(%rip), %rbx
+    00000076: 	leaq	0x3e80(%rbx), %rbp
+    0000007d: 	movq	%rbx, %r12
+    00000080: 	movq	%rbx, %rax
+    00000083: 	unpcklpd	%xmm0, %xmm0
+    00000087: 	nopw	(%rax,%rax) # Size: 9
+.Ltmp4:
+    00000090: 	movaps	%xmm0, (%rax)
+    00000093: 	addq	$0x10, %rax
+    00000097: 	cmpq	%rbp, %rax
+    0000009a: 	jne	.Ltmp4 # Offset: 154
+    0000009c: 	leaq	sum1_return(%rip), %r14
+    000000a3: 	leaq	DATAat0x31ab(%rip), %rcx
+    000000aa: 	movl	$0x7d0, %esi
+    000000af: 	movq	%r12, %rdi
+    000000b2: 	movq	%r14, %rdx
+    000000b5: 	leaq	sum1_longjmp(%rip), %r13
+    000000bc: 	callq	test1 # Offset: 188
+    000000c1: 	movq	%r14, %rdx
+    000000c4: 	movl	$0x7d0, %esi
+    000000c9: 	movq	%r12, %rdi
+    000000cc: 	leaq	DATAat0x3118(%rip), %rcx
+    000000d3: 	callq	test1_deep # Offset: 211
+    000000d8: 	movq	%r13, %rdx
+    000000db: 	movl	$0x7d0, %esi
+    000000e0: 	movq	%r12, %rdi
+    000000e3: 	leaq	DATAat0x31c8(%rip), %rcx
+    000000ea: 	callq	test1_longjmp # Offset: 234
+    000000ef: 	movq	%r13, %rdx
+    000000f2: 	movl	$0x7d0, %esi
+    000000f7: 	movq	%r12, %rdi
+    000000fa: 	leaq	DATAat0x31e1(%rip), %rcx
+    00000101: 	callq	test1_longjmp_deep # Offset: 257
+    00000106: 	movl	iterations(%rip), %edx
+    0000010c: 	xorl	%r8d, %r8d
+    0000010f: 	xorl	%ecx, %ecx
+    00000111: 	movl	$0x7d0, %esi
+    00000116: 	leaq	DATAat0x31ff(%rip), %rdi
+    0000011d: 	callq	summarize # Offset: 285
+    00000122: 	movsd	init_value(%rip), %xmm0
+    0000012a: 	orpd	DATAat0x32f0(%rip), %xmm0
+    00000132: 	unpcklpd	%xmm0, %xmm0
+    00000136: 	nopw	%cs:(%rax,%rax) # Size: 10
+.Ltmp5:
+    00000140: 	movaps	%xmm0, (%rbx)
+    00000143: 	addq	$0x10, %rbx
+    00000147: 	cmpq	%rbp, %rbx
+    0000014a: 	jne	.Ltmp5 # Offset: 330
+    0000014c: 	movq	%r14, %rdx
+    0000014f: 	movq	%r12, %rdi
+    00000152: 	movl	$0x7d0, %esi
+    00000157: 	leaq	DATAat0x3213(%rip), %rcx
+    0000015e: 	callq	test1 # Offset: 350
+    00000163: 	movq	%r14, %rdx
+    00000166: 	movq	%r12, %rdi
+    00000169: 	movl	$0x7d0, %esi
+    0000016e: 	leaq	DATAat0x322c(%rip), %rcx
+    00000175: 	callq	test1_deep # Offset: 373
+    0000017a: 	movq	%r13, %rdx
+    0000017d: 	movq	%r12, %rdi
+    00000180: 	movl	$0x7d0, %esi
+    00000185: 	leaq	DATAat0x324a(%rip), %rcx
+    0000018c: 	callq	test1_longjmp # Offset: 396
+    00000191: 	movq	%r13, %rdx
+    00000194: 	movq	%r12, %rdi
+    00000197: 	movl	$0x7d0, %esi
+    0000019c: 	leaq	DATAat0x325f(%rip), %rcx
+    000001a3: 	callq	test1_longjmp_deep # Offset: 419
+    000001a8: 	movl	iterations(%rip), %edx
+    000001ae: 	xorl	%r8d, %r8d
+    000001b1: 	xorl	%ecx, %ecx
+    000001b3: 	movl	$0x7d0, %esi
+    000001b8: 	leaq	DATAat0x3279(%rip), %rdi
+    000001bf: 	callq	summarize # Offset: 447
+    000001c4: 	popq	%rbx
+    000001c5: 	xorl	%eax, %eax
+    000001c7: 	popq	%rbp
+    000001c8: 	popq	%r12
+    000001ca: 	popq	%r13
+    000001cc: 	popq	%r14
+    000001ce: 	retq # Offset: 462
+.Ltmp3:
+    000001cf: 	movq	0x8(%r14), %rdi
+    000001d3: 	movl	$0xa, %edx
+    000001d8: 	xorl	%esi, %esi
+    000001da: 	callq	strtol@PLT # Offset: 474
+    000001df: 	movl	%eax, iterations(%rip)
+    000001e5: 	cmpl	$0x2, %r13d
+    000001e9: 	jle	.Ltmp6 # Offset: 489
+    000001ef: 	movq	0x10(%r14), %rdi
+    000001f3: 	xorl	%esi, %esi
+    000001f5: 	callq	strtod@PLT # Offset: 501
+    000001fa: 	movsd	%xmm0, init_value(%rip)
+    00000202: 	jmp	.Ltmp6 # Offset: 514
+.Ltmp1:
+    00000207: 	movl	$0xa, %edi
+    0000020c: 	callq	putchar@PLT # Offset: 524
+    00000211: 	jmp	.Ltmp6 # Offset: 529
+DWARF CFI Instructions:
+    <empty>
+End of Function "main"
+
+Binary Function "_start" after disassembly {
+  Number      : 3
+  State       : disassembled
+  Address     : 0x1420
+  Size        : 0x26
+  MaxSize     : 0x30
+  Offset      : 0x1420
+  Section     : .text
+  Orc Section : .local.text._start
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB02:
+    00000000: 	endbr64
+    00000004: 	xorl	%ebp, %ebp
+    00000006: 	movq	%rdx, %r9
+    00000009: 	popq	%rsi
+    0000000a: 	movq	%rsp, %rdx
+    0000000d: 	andq	$-0x10, %rsp
+    00000011: 	pushq	%rax
+    00000012: 	pushq	%rsp
+    00000013: 	xorl	%r8d, %r8d
+    00000016: 	xorl	%ecx, %ecx
+    00000018: 	leaq	main(%rip), %rdi
+    0000001f: 	callq	*DATAat0x4fd8(%rip) # Offset: 31
+    00000025: 	hlt
+DWARF CFI Instructions:
+    <empty>
+End of Function "_start"
+
+Binary Function "deregister_tm_clones/1(*2)" after disassembly {
+  All names   : deregister_tm_clones/1
+                deregister_tm_clones/crtstuff.c/1
+  Number      : 4
+  State       : disassembled
+  Address     : 0x1450
+  Size        : 0x30
+  MaxSize     : 0x30
+  Offset      : 0x1450
+  Section     : .text
+  Orc Section : .local.text.deregister_tm_clones/1
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB03:
+    00000000: 	leaq	"completed.0/1"(%rip), %rdi
+    00000007: 	leaq	"completed.0/1"(%rip), %rax
+    0000000e: 	cmpq	%rdi, %rax
+    00000011: 	je	.Ltmp7 # Offset: 17
+    00000013: 	movq	DATAat0x4fe0(%rip), %rax
+    0000001a: 	testq	%rax, %rax
+    0000001d: 	je	.Ltmp7 # Offset: 29
+    0000001f: 	jmpq	*%rax # UNKNOWN CONTROL FLOW # Offset: 31
+    00000021: 	nopl	(%rax) # Size: 7
+.Ltmp7:
+    00000028: 	retq # Offset: 40
+    00000029: 	nopl	(%rax) # Size: 7
+DWARF CFI Instructions:
+    <empty>
+End of Function "deregister_tm_clones/1(*2)"
+
+Binary Function "register_tm_clones/1(*2)" after disassembly {
+  All names   : register_tm_clones/1
+                register_tm_clones/crtstuff.c/1
+  Number      : 5
+  State       : disassembled
+  Address     : 0x1480
+  Size        : 0x40
+  MaxSize     : 0x40
+  Offset      : 0x1480
+  Section     : .text
+  Orc Section : .local.text.register_tm_clones/1
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB04:
+    00000000: 	leaq	"completed.0/1"(%rip), %rdi
+    00000007: 	leaq	"completed.0/1"(%rip), %rsi
+    0000000e: 	subq	%rdi, %rsi
+    00000011: 	movq	%rsi, %rax
+    00000014: 	shrq	$0x3f, %rsi
+    00000018: 	sarq	$0x3, %rax
+    0000001c: 	addq	%rax, %rsi
+    0000001f: 	sarq	%rsi
+    00000022: 	je	.Ltmp8 # Offset: 34
+    00000024: 	movq	DATAat0x4ff0(%rip), %rax
+    0000002b: 	testq	%rax, %rax
+    0000002e: 	je	.Ltmp8 # Offset: 46
+    00000030: 	jmpq	*%rax # UNKNOWN CONTROL FLOW # Offset: 48
+    00000032: 	nopw	(%rax,%rax) # Size: 6
+.Ltmp8:
+    00000038: 	retq # Offset: 56
+    00000039: 	nopl	(%rax) # Size: 7
+DWARF CFI Instructions:
+    <empty>
+End of Function "register_tm_clones/1(*2)"
+
+Binary Function "__do_global_dtors_aux/1(*2)" after disassembly {
+  All names   : __do_global_dtors_aux/1
+                __do_global_dtors_aux/crtstuff.c/1
+  Number      : 6
+  State       : disassembled
+  Address     : 0x14c0
+  Size        : 0x40
+  MaxSize     : 0x40
+  Offset      : 0x14c0
+  Section     : .text
+  Orc Section : .local.text.__do_global_dtors_aux/1
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB05:
+    00000000: 	endbr64
+    00000004: 	cmpb	$0x0, "completed.0/1"(%rip)
+    0000000b: 	jne	.Ltmp9 # Offset: 11
+    0000000d: 	pushq	%rbp
+    0000000e: 	cmpq	$0x0, __cxa_finalize@GOT(%rip)
+    00000016: 	movq	%rsp, %rbp
+    00000019: 	je	.Ltmp10 # Offset: 25
+    0000001b: 	movq	__dso_handle(%rip), %rdi
+    00000022: 	callq	__cxa_finalize@PLT # Offset: 34
+.Ltmp10:
+    00000027: 	callq	"deregister_tm_clones/1" # Offset: 39
+    0000002c: 	movb	$0x1, "completed.0/1"(%rip)
+    00000033: 	popq	%rbp
+    00000034: 	retq # Offset: 52
+    00000035: 	nopl	(%rax) # Size: 3
+.Ltmp9:
+    00000038: 	retq # Offset: 56
+    00000039: 	nopl	(%rax) # Size: 7
+DWARF CFI Instructions:
+    <empty>
+End of Function "__do_global_dtors_aux/1(*2)"
+
+Binary Function "frame_dummy/1(*2)" after disassembly {
+  All names   : frame_dummy/1
+                frame_dummy/crtstuff.c/1
+  Number      : 7
+  State       : disassembled
+  Address     : 0x1500
+  Size        : 0x10
+  MaxSize     : 0x10
+  Offset      : 0x1500
+  Section     : .text
+  Orc Section : .local.text.frame_dummy/1
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB06:
+    00000000: 	endbr64
+    00000004: 	jmp	"register_tm_clones/1" # TAILCALL  # Offset: 4
+    00000009: 	nopl	(%rax) # Size: 7
+DWARF CFI Instructions:
+    <empty>
+End of Function "frame_dummy/1(*2)"
+
+Binary Function "sum1_return" after disassembly {
+  Number      : 8
+  State       : disassembled
+  Address     : 0x1510
+  Size        : 0x1e
+  MaxSize     : 0x20
+  Offset      : 0x1510
+  Section     : .text
+  Orc Section : .local.text.sum1_return
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB07:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	xorl	%eax, %eax
+    0000000a: 	addsd	%xmm0, %xmm1
+    0000000e: 	movsd	%xmm1, (%rdi)
+    00000012: 	pxor	%xmm1, %xmm1
+    00000016: 	comisd	%xmm0, %xmm1
+    0000001a: 	seta	%al
+    0000001d: 	retq # Offset: 29
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_return"
+
+Binary Function "sum1_longjmp" after disassembly {
+  Number      : 9
+  State       : disassembled
+  Address     : 0x1530
+  Size        : 0x2d
+  MaxSize     : 0x30
+  Offset      : 0x1530
+  Section     : .text
+  Orc Section : .local.text.sum1_longjmp
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB08:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	addsd	%xmm0, %xmm1
+    0000000c: 	movsd	%xmm1, (%rdi)
+    00000010: 	pxor	%xmm1, %xmm1
+    00000014: 	comisd	%xmm0, %xmm1
+    00000018: 	ja	.Ltmp11 # Offset: 24
+    0000001a: 	retq # Offset: 26
+.Ltmp11:
+    0000001b: 	pushq	%rax
+    0000001c: 	movq	"gLastJmp/1"(%rip), %rdi
+    00000023: 	movl	$0x1, %esi
+    00000028: 	callq	__longjmp_chk@PLT # Offset: 40
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_longjmp"
+
+Binary Function "record_result" after disassembly {
+  Number      : 10
+  State       : disassembled
+  Address     : 0x1560
+  Size        : 0xa0
+  MaxSize     : 0xa0
+  Offset      : 0x1560
+  Section     : .text
+  Orc Section : .local.text.record_result
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB09:
+    00000000: 	endbr64
+    00000004: 	pushq	%rbx
+    00000005: 	movq	%rdi, %rbx
+    00000008: 	subq	$0x10, %rsp
+    0000000c: 	movq	results(%rip), %rdi
+    00000013: 	movl	allocated_results(%rip), %esi
+    00000019: 	testq	%rdi, %rdi
+    0000001c: 	je	.Ltmp12 # Offset: 28
+    0000001e: 	movl	current_test(%rip), %eax
+    00000024: 	cmpl	%esi, %eax
+    00000026: 	jl	.Ltmp13 # Offset: 38
+.Ltmp12:
+    00000028: 	addl	$0xa, %esi
+    0000002b: 	movsd	%xmm0, 0x8(%rsp)
+    00000031: 	movl	%esi, allocated_results(%rip)
+    00000037: 	movslq	%esi, %rsi
+    0000003a: 	shlq	$0x4, %rsi
+    0000003e: 	callq	realloc@PLT # Offset: 62
+    00000043: 	movq	%rax, results(%rip)
+    0000004a: 	movq	%rax, %rdi
+    0000004d: 	testq	%rax, %rax
+    00000050: 	je	.Ltmp14 # Offset: 80
+    00000052: 	movl	current_test(%rip), %eax
+    00000058: 	movsd	0x8(%rsp), %xmm0
+.Ltmp13:
+    0000005e: 	movslq	%eax, %rdx
+    00000061: 	addl	$0x1, %eax
+    00000064: 	shlq	$0x4, %rdx
+    00000068: 	addq	%rdx, %rdi
+    0000006b: 	movsd	%xmm0, (%rdi)
+    0000006f: 	movq	%rbx, 0x8(%rdi)
+    00000073: 	movl	%eax, current_test(%rip)
+    00000079: 	addq	$0x10, %rsp
+    0000007d: 	popq	%rbx
+    0000007e: 	retq # Offset: 126
+.Ltmp14:
+    0000007f: 	movl	allocated_results(%rip), %edx
+    00000085: 	movl	$0x1, %edi
+    0000008a: 	leaq	DATAat0x3008(%rip), %rsi
+    00000091: 	xorl	%eax, %eax
+    00000093: 	callq	__printf_chk@PLT # Offset: 147
+    00000098: 	orl	$-0x1, %edi
+    0000009b: 	callq	exit@PLT # Offset: 155
+DWARF CFI Instructions:
+    <empty>
+End of Function "record_result"
+
+Binary Function "summarize" after disassembly {
+  Number      : 11
+  State       : disassembled
+  Address     : 0x1600
+  Size        : 0x325
+  MaxSize     : 0x330
+  Offset      : 0x1600
+  Section     : .text
+  Orc Section : .local.text.summarize
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB010:
+    00000000: 	endbr64
+    00000004: 	pushq	%r15
+    00000006: 	pushq	%r14
+    00000008: 	pushq	%r13
+    0000000a: 	pushq	%r12
+    0000000c: 	pushq	%rbp
+    0000000d: 	pushq	%rbx
+    0000000e: 	subq	$0x38, %rsp
+    00000012: 	movl	current_test(%rip), %eax
+    00000018: 	movl	%r8d, 0x2c(%rsp)
+    0000001d: 	testl	%eax, %eax
+    0000001f: 	je	.Ltmp15 # Offset: 31
+    00000025: 	movq	%rdi, %r12
+    00000028: 	movl	%esi, %r15d
+    0000002b: 	movl	%edx, %r13d
+    0000002e: 	jle	.Ltmp16 # Offset: 46
+    00000034: 	movq	results(%rip), %rcx
+    0000003b: 	subl	$0x1, %eax
+    0000003e: 	movl	$0xc, %ebx
+    00000043: 	shlq	$0x4, %rax
+    00000047: 	leaq	0x8(%rcx), %r14
+    0000004b: 	leaq	0x18(%rcx,%rax), %rbp
+.Ltmp17:
+    00000050: 	movq	(%r14), %rdi
+    00000053: 	callq	strlen@PLT # Offset: 83
+    00000058: 	cmpl	%eax, %ebx
+    0000005a: 	cmovll	%eax, %ebx
+    0000005d: 	addq	$0x10, %r14
+    00000061: 	cmpq	%r14, %rbp
+    00000064: 	jne	.Ltmp17 # Offset: 100
+    00000066: 	leal	-0xc(%rbx), %edx
+.Ltmp30:
+    00000069: 	leaq	DATAat0x31a9(%rip), %rbp
+    00000070: 	leaq	DATAat0x3028(%rip), %rsi
+    00000077: 	movl	$0x1, %edi
+    0000007c: 	xorl	%eax, %eax
+    0000007e: 	movq	%rbp, %rcx
+    00000081: 	callq	__printf_chk@PLT # Offset: 129
+    00000086: 	movl	%ebx, %edx
+    00000088: 	movq	%rbp, %rcx
+    0000008b: 	movl	$0x1, %edi
+    00000090: 	leaq	DATAat0x3068(%rip), %rsi
+    00000097: 	xorl	%eax, %eax
+    00000099: 	callq	__printf_chk@PLT # Offset: 153
+    0000009e: 	movl	current_test(%rip), %edx
+    000000a4: 	testl	%edx, %edx
+    000000a6: 	jle	.Ltmp18 # Offset: 166
+    000000ac: 	pxor	%xmm0, %xmm0
+    000000b0: 	pxor	%xmm1, %xmm1
+    000000b4: 	xorl	%r14d, %r14d
+    000000b7: 	movsd	DATAat0x32b8(%rip), %xmm3
+    000000bf: 	cvtsi2sd	%r15d, %xmm0
+    000000c4: 	leaq	DATAat0x3098(%rip), %rbp
+    000000cb: 	cvtsi2sd	%r13d, %xmm1
+    000000d0: 	mulsd	%xmm1, %xmm0
+    000000d4: 	divsd	DATAat0x32b0(%rip), %xmm0
+    000000dc: 	movsd	%xmm0, 0x20(%rsp)
+    000000e2: 	jmp	.Ltmp19 # Offset: 226
+    000000e7: 	nopw	(%rax,%rax) # Size: 9
+.Ltmp23:
+    000000f0: 	comisd	%xmm0, %xmm3
+    000000f4: 	ja	.Ltmp20 # Offset: 244
+    000000fa: 	movq	DATAat0x32a0(%rip), %rdi
+    00000101: 	movq	%rdi, %xmm2
+.Ltmp24:
+    00000106: 	comisd	%xmm0, %xmm3
+    0000010a: 	movq	DATAat0x32a0(%rip), %rsi
+    00000111: 	movq	%rsi, %xmm1
+    00000116: 	ja	.Ltmp21 # Offset: 278
+    00000118: 	movsd	0x20(%rsp), %xmm1
+    0000011e: 	divsd	%xmm0, %xmm1
+.Ltmp21:
+    00000122: 	movq	0x8(%rax), %r15
+    00000126: 	movsd	%xmm0, 0x18(%rsp)
+    0000012c: 	addq	$0x1, %r14
+    00000130: 	movsd	%xmm1, 0x10(%rsp)
+    00000136: 	movq	%r15, %rdi
+    00000139: 	movsd	%xmm2, 0x8(%rsp)
+    0000013f: 	callq	strlen@PLT # Offset: 319
+    00000144: 	movsd	0x8(%rsp), %xmm2
+    0000014a: 	movl	%ebx, %ecx
+    0000014c: 	movq	%r15, %r9
+    0000014f: 	movsd	0x10(%rsp), %xmm1
+    00000155: 	subl	%eax, %ecx
+    00000157: 	movl	$0x1, %edi
+    0000015c: 	movl	%r13d, %edx
+    0000015f: 	movsd	0x18(%rsp), %xmm0
+    00000165: 	leaq	DATAat0x315f(%rip), %r8
+    0000016c: 	movq	%rbp, %rsi
+    0000016f: 	movl	$0x3, %eax
+    00000174: 	callq	__printf_chk@PLT # Offset: 372
+    00000179: 	movl	current_test(%rip), %eax
+    0000017f: 	movq	DATAat0x32b8(%rip), %rdi
+    00000186: 	cmpl	%r14d, %eax
+    00000189: 	movq	%rdi, %xmm3
+    0000018e: 	jle	.Ltmp22 # Offset: 398
+.Ltmp19:
+    00000190: 	movq	results(%rip), %rax
+    00000197: 	movq	%r14, %rcx
+    0000019a: 	movl	%r14d, %r13d
+    0000019d: 	shlq	$0x4, %rcx
+    000001a1: 	movsd	(%rax), %xmm1
+    000001a5: 	addq	%rcx, %rax
+    000001a8: 	movsd	(%rax), %xmm0
+    000001ac: 	comisd	%xmm1, %xmm3
+    000001b0: 	ja	.Ltmp23 # Offset: 432
+    000001b6: 	movapd	%xmm0, %xmm2
+    000001ba: 	divsd	%xmm1, %xmm2
+    000001be: 	jmp	.Ltmp24 # Offset: 446
+    000001c3: 	nopl	(%rax,%rax) # Size: 5
+.Ltmp20:
+    000001c8: 	movq	DATAat0x32a8(%rip), %rsi
+    000001cf: 	movq	DATAat0x32a0(%rip), %rdx
+    000001d6: 	movq	%rsi, %xmm2
+    000001db: 	movq	%rdx, %xmm1
+    000001e0: 	jmp	.Ltmp21 # Offset: 480
+    000001e5: 	nopl	(%rax) # Size: 3
+.Ltmp22:
+    000001e8: 	testl	%eax, %eax
+    000001ea: 	jle	.Ltmp18 # Offset: 490
+    000001f0: 	movq	results(%rip), %rdx
+    000001f7: 	leal	-0x1(%rax), %ecx
+    000001fa: 	pxor	%xmm1, %xmm1
+    000001fe: 	shlq	$0x4, %rcx
+    00000202: 	movapd	%xmm1, %xmm0
+    00000206: 	leaq	0x10(%rdx), %rax
+    0000020a: 	addq	%rax, %rcx
+    0000020d: 	jmp	.Ltmp25 # Offset: 525
+    0000020f: 	nop # Size: 1
+.Ltmp26:
+    00000210: 	addq	$0x10, %rax
+.Ltmp25:
+    00000214: 	addsd	(%rdx), %xmm0
+    00000218: 	movq	%rax, %rdx
+    0000021b: 	cmpq	%rax, %rcx
+    0000021e: 	jne	.Ltmp26 # Offset: 542
+.Ltmp31:
+    00000220: 	movq	%r12, %rdx
+    00000223: 	movl	$0x1, %edi
+    00000228: 	movl	$0x1, %eax
+    0000022d: 	movsd	%xmm1, 0x8(%rsp)
+    00000233: 	leaq	DATAat0x30c8(%rip), %rsi
+    0000023a: 	callq	__printf_chk@PLT # Offset: 570
+    0000023f: 	movl	0x2c(%rsp), %eax
+    00000243: 	movl	current_test(%rip), %ebp
+    00000249: 	testl	%eax, %eax
+    0000024b: 	je	.Ltmp27 # Offset: 587
+    0000024d: 	cmpl	$0x1, %ebp
+    00000250: 	jg	.Ltmp28 # Offset: 592
+.Ltmp27:
+    00000252: 	movl	$0x0, current_test(%rip)
+.Ltmp15:
+    0000025c: 	addq	$0x38, %rsp
+    00000260: 	popq	%rbx
+    00000261: 	popq	%rbp
+    00000262: 	popq	%r12
+    00000264: 	popq	%r13
+    00000266: 	popq	%r14
+    00000268: 	popq	%r15
+    0000026a: 	retq # Offset: 618
+    0000026b: 	nopl	(%rax,%rax) # Size: 5
+.Ltmp28:
+    00000270: 	movq	results(%rip), %rbx
+    00000277: 	movsd	0x8(%rsp), %xmm1
+    0000027d: 	movl	$0x1, %r13d
+    00000283: 	movsd	(%rbx), %xmm5
+    00000287: 	addq	$0x10, %rbx
+    0000028b: 	movsd	%xmm5, 0x10(%rsp)
+    00000291: 	nopl	(%rax) # Size: 7
+.Ltmp29:
+    00000298: 	movsd	(%rbx), %xmm0
+    0000029c: 	movsd	%xmm1, 0x8(%rsp)
+    000002a2: 	addl	$0x1, %r13d
+    000002a6: 	addq	$0x10, %rbx
+    000002aa: 	divsd	0x10(%rsp), %xmm0
+    000002b0: 	callq	log@PLT # Offset: 688
+    000002b5: 	movsd	0x8(%rsp), %xmm1
+    000002bb: 	addsd	%xmm0, %xmm1
+    000002bf: 	cmpl	%r13d, %ebp
+    000002c2: 	jg	.Ltmp29 # Offset: 706
+    000002c4: 	subl	$0x1, %ebp
+    000002c7: 	pxor	%xmm0, %xmm0
+    000002cb: 	cvtsi2sd	%ebp, %xmm0
+    000002cf: 	divsd	%xmm0, %xmm1
+    000002d3: 	movapd	%xmm1, %xmm0
+    000002d7: 	callq	exp@PLT # Offset: 727
+    000002dc: 	movq	%r12, %rdx
+    000002df: 	movl	$0x1, %edi
+    000002e4: 	leaq	DATAat0x313a(%rip), %rsi
+    000002eb: 	movl	$0x1, %eax
+    000002f0: 	callq	__printf_chk@PLT # Offset: 752
+    000002f5: 	movl	$0x0, current_test(%rip)
+    000002ff: 	jmp	.Ltmp15 # Offset: 767
+    00000304: 	nopl	(%rax) # Size: 4
+.Ltmp16:
+    00000308: 	xorl	%edx, %edx
+    0000030a: 	movl	$0xc, %ebx
+    0000030f: 	jmp	.Ltmp30 # Offset: 783
+    00000314: 	nopl	(%rax) # Size: 4
+.Ltmp18:
+    00000318: 	pxor	%xmm1, %xmm1
+    0000031c: 	movapd	%xmm1, %xmm0
+    00000320: 	jmp	.Ltmp31 # Offset: 800
+DWARF CFI Instructions:
+    <empty>
+End of Function "summarize"
+
+Binary Function "summarize_simplef" after disassembly {
+  Number      : 12
+  State       : disassembled
+  Address     : 0x1930
+  Size        : 0x1a6
+  MaxSize     : 0x1b0
+  Offset      : 0x1930
+  Section     : .text
+  Orc Section : .local.text.summarize_simplef
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB011:
+    00000000: 	endbr64
+    00000004: 	pushq	%r15
+    00000006: 	pushq	%r14
+    00000008: 	pushq	%r13
+    0000000a: 	pushq	%r12
+    0000000c: 	pushq	%rbp
+    0000000d: 	pushq	%rbx
+    0000000e: 	subq	$0x18, %rsp
+    00000012: 	movl	current_test(%rip), %eax
+    00000018: 	movq	%rsi, 0x8(%rsp)
+    0000001d: 	testl	%eax, %eax
+    0000001f: 	je	.Ltmp32 # Offset: 31
+    00000025: 	movq	%rdi, %r12
+    00000028: 	jle	.Ltmp33 # Offset: 40
+    0000002e: 	movq	results(%rip), %rdx
+    00000035: 	subl	$0x1, %eax
+    00000038: 	movl	$0xc, %ebp
+    0000003d: 	shlq	$0x4, %rax
+    00000041: 	leaq	0x8(%rdx), %r13
+    00000045: 	leaq	0x18(%rdx,%rax), %rbx
+    0000004a: 	nopw	(%rax,%rax) # Size: 6
+.Ltmp34:
+    00000050: 	movq	(%r13), %rdi
+    00000054: 	callq	strlen@PLT # Offset: 84
+    00000059: 	cmpl	%eax, %ebp
+    0000005b: 	cmovll	%eax, %ebp
+    0000005e: 	addq	$0x10, %r13
+    00000062: 	cmpq	%r13, %rbx
+    00000065: 	jne	.Ltmp34 # Offset: 101
+    00000067: 	leal	-0xc(%rbp), %ecx
+.Ltmp39:
+    0000006a: 	leaq	DATAat0x31a9(%rip), %r8
+    00000071: 	movl	$0x1, %esi
+    00000076: 	xorl	%eax, %eax
+    00000078: 	xorl	%ebx, %ebx
+    0000007a: 	leaq	DATAat0x30f0(%rip), %rdx
+    00000081: 	movq	%r12, %rdi
+    00000084: 	leaq	DATAat0x3160(%rip), %r14
+    0000008b: 	callq	__fprintf_chk@PLT # Offset: 139
+    00000090: 	movl	$0x1, %esi
+    00000095: 	movl	%ebp, %ecx
+    00000097: 	movq	%r12, %rdi
+    0000009a: 	leaq	DATAat0x31a9(%rip), %r8
+    000000a1: 	leaq	DATAat0x314e(%rip), %rdx
+    000000a8: 	xorl	%eax, %eax
+    000000aa: 	callq	__fprintf_chk@PLT # Offset: 170
+    000000af: 	movl	current_test(%rip), %esi
+    000000b5: 	testl	%esi, %esi
+    000000b7: 	jle	.Ltmp35 # Offset: 183
+    000000bd: 	nopl	(%rax) # Size: 3
+.Ltmp36:
+    000000c0: 	movq	%rbx, %rdx
+    000000c3: 	shlq	$0x4, %rdx
+    000000c7: 	addq	results(%rip), %rdx
+    000000ce: 	movq	0x8(%rdx), %r13
+    000000d2: 	movq	%rdx, %r15
+    000000d5: 	movq	%r13, %rdi
+    000000d8: 	callq	strlen@PLT # Offset: 216
+    000000dd: 	subq	$0x8, %rsp
+    000000e1: 	movsd	(%r15), %xmm0
+    000000e6: 	movl	%ebx, %ecx
+    000000e8: 	pushq	%r13
+    000000ea: 	movl	%ebp, %r8d
+    000000ed: 	movq	%r14, %rdx
+    000000f0: 	leaq	DATAat0x315f(%rip), %r9
+    000000f7: 	subl	%eax, %r8d
+    000000fa: 	movl	$0x1, %esi
+    000000ff: 	movq	%r12, %rdi
+    00000102: 	movl	$0x1, %eax
+    00000107: 	addq	$0x1, %rbx
+    0000010b: 	callq	__fprintf_chk@PLT # Offset: 267
+    00000110: 	movl	current_test(%rip), %eax
+    00000116: 	popq	%rdx
+    00000117: 	popq	%rcx
+    00000118: 	cmpl	%ebx, %eax
+    0000011a: 	jg	.Ltmp36 # Offset: 282
+    0000011c: 	testl	%eax, %eax
+    0000011e: 	jle	.Ltmp35 # Offset: 286
+    00000124: 	movq	results(%rip), %rdx
+    0000012b: 	leal	-0x1(%rax), %ecx
+    0000012e: 	pxor	%xmm0, %xmm0
+    00000132: 	shlq	$0x4, %rcx
+    00000136: 	leaq	0x10(%rdx), %rax
+    0000013a: 	addq	%rax, %rcx
+    0000013d: 	jmp	.Ltmp37 # Offset: 317
+    0000013f: 	nop # Size: 1
+.Ltmp38:
+    00000140: 	addq	$0x10, %rax
+.Ltmp37:
+    00000144: 	addsd	(%rdx), %xmm0
+    00000148: 	movq	%rax, %rdx
+    0000014b: 	cmpq	%rax, %rcx
+    0000014e: 	jne	.Ltmp38 # Offset: 334
+.Ltmp40:
+    00000150: 	movq	0x8(%rsp), %rcx
+    00000155: 	movl	$0x1, %esi
+    0000015a: 	movq	%r12, %rdi
+    0000015d: 	movl	$0x1, %eax
+    00000162: 	leaq	DATAat0x30c8(%rip), %rdx
+    00000169: 	callq	__fprintf_chk@PLT # Offset: 361
+    0000016e: 	movl	$0x0, current_test(%rip)
+.Ltmp32:
+    00000178: 	addq	$0x18, %rsp
+    0000017c: 	popq	%rbx
+    0000017d: 	popq	%rbp
+    0000017e: 	popq	%r12
+    00000180: 	popq	%r13
+    00000182: 	popq	%r14
+    00000184: 	popq	%r15
+    00000186: 	retq # Offset: 390
+    00000187: 	nopw	(%rax,%rax) # Size: 9
+.Ltmp33:
+    00000190: 	xorl	%ecx, %ecx
+    00000192: 	movl	$0xc, %ebp
+    00000197: 	jmp	.Ltmp39 # Offset: 407
+    0000019c: 	nopl	(%rax) # Size: 4
+.Ltmp35:
+    000001a0: 	pxor	%xmm0, %xmm0
+    000001a4: 	jmp	.Ltmp40 # Offset: 420
+DWARF CFI Instructions:
+    <empty>
+End of Function "summarize_simplef"
+
+Binary Function "start_timer" after disassembly {
+  Number      : 13
+  State       : disassembled
+  Address     : 0x1ae0
+  Size        : 0x19
+  MaxSize     : 0x20
+  Offset      : 0x1ae0
+  Section     : .text
+  Orc Section : .local.text.start_timer
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB012:
+    00000000: 	endbr64
+    00000004: 	subq	$0x8, %rsp
+    00000008: 	callq	clock@PLT # Offset: 8
+    0000000d: 	movq	%rax, start_time(%rip)
+    00000014: 	addq	$0x8, %rsp
+    00000018: 	retq # Offset: 24
+DWARF CFI Instructions:
+    <empty>
+End of Function "start_timer"
+
+Binary Function "timer" after disassembly {
+  Number      : 14
+  State       : disassembled
+  Address     : 0x1b00
+  Size        : 0x31
+  MaxSize     : 0x40
+  Offset      : 0x1b00
+  Section     : .text
+  Orc Section : .local.text.timer
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB013:
+    00000000: 	endbr64
+    00000004: 	subq	$0x8, %rsp
+    00000008: 	callq	clock@PLT # Offset: 8
+    0000000d: 	pxor	%xmm0, %xmm0
+    00000011: 	movq	%rax, end_time(%rip)
+    00000018: 	subq	start_time(%rip), %rax
+    0000001f: 	cvtsi2sd	%rax, %xmm0
+    00000024: 	divsd	DATAat0x32b0(%rip), %xmm0
+    0000002c: 	addq	$0x8, %rsp
+    00000030: 	retq # Offset: 48
+DWARF CFI Instructions:
+    <empty>
+End of Function "timer"
+
+Binary Function "check_sum" after disassembly {
+  Number      : 15
+  State       : disassembled
+  Address     : 0x1b40
+  Size        : 0x3e
+  MaxSize     : 0x40
+  Offset      : 0x1b40
+  Section     : .text
+  Orc Section : .local.text.check_sum
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB014:
+    00000000: 	endbr64
+    00000004: 	movapd	%xmm0, %xmm1
+    00000008: 	movsd	DATAat0x32c0(%rip), %xmm0
+    00000010: 	mulsd	init_value(%rip), %xmm0
+    00000018: 	ucomisd	%xmm1, %xmm0
+    0000001c: 	jp	.Ltmp41 # Offset: 28
+    0000001e: 	jne	.Ltmp41 # Offset: 30
+    00000020: 	retq # Offset: 32
+    00000021: 	nopl	(%rax) # Size: 7
+.Ltmp41:
+    00000028: 	movq	%rdi, %rdx
+    0000002b: 	leaq	DATAat0x3178(%rip), %rsi
+    00000032: 	movl	$0x1, %edi
+    00000037: 	xorl	%eax, %eax
+    00000039: 	jmp	__printf_chk@PLT # TAILCALL  # Offset: 57
+DWARF CFI Instructions:
+    <empty>
+End of Function "check_sum"
+
+Binary Function "check_size" after disassembly {
+  Number      : 16
+  State       : disassembled
+  Address     : 0x1b80
+  Size        : 0x23
+  MaxSize     : 0x30
+  Offset      : 0x1b80
+  Section     : .text
+  Orc Section : .local.text.check_size
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB015:
+    00000000: 	endbr64
+    00000004: 	movq	%rsi, %rdx
+    00000007: 	cmpl	$0x7d0, %edi
+    0000000d: 	jne	.Ltmp42 # Offset: 13
+    0000000f: 	retq # Offset: 15
+.Ltmp42:
+    00000010: 	leaq	DATAat0x318f(%rip), %rsi
+    00000017: 	movl	$0x1, %edi
+    0000001c: 	xorl	%eax, %eax
+    0000001e: 	jmp	__printf_chk@PLT # TAILCALL  # Offset: 30
+DWARF CFI Instructions:
+    <empty>
+End of Function "check_size"
+
+Binary Function "fill" after disassembly {
+  Number      : 17
+  State       : disassembled
+  Address     : 0x1bb0
+  Size        : 0x61
+  MaxSize     : 0x70
+  Offset      : 0x1bb0
+  Section     : .text
+  Orc Section : .local.text.fill
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB016:
+    00000000: 	endbr64
+    00000004: 	cmpq	%rsi, %rdi
+    00000007: 	je	.Ltmp43 # Offset: 7
+    00000009: 	subq	%rdi, %rsi
+    0000000c: 	movq	%rdi, %rax
+    0000000f: 	leaq	-0x8(%rsi), %rcx
+    00000013: 	shrq	$0x3, %rcx
+    00000017: 	addq	$0x1, %rcx
+    0000001b: 	cmpq	$0x8, %rsi
+    0000001f: 	je	.Ltmp44 # Offset: 31
+    00000021: 	movq	%rcx, %rdx
+    00000024: 	movapd	%xmm0, %xmm1
+    00000028: 	shrq	%rdx
+    0000002b: 	unpcklpd	%xmm1, %xmm1
+    0000002f: 	shlq	$0x4, %rdx
+    00000033: 	addq	%rdi, %rdx
+    00000036: 	nopw	%cs:(%rax,%rax) # Size: 10
+.Ltmp45:
+    00000040: 	movups	%xmm1, (%rax)
+    00000043: 	addq	$0x10, %rax
+    00000047: 	cmpq	%rax, %rdx
+    0000004a: 	jne	.Ltmp45 # Offset: 74
+    0000004c: 	movq	%rcx, %rax
+    0000004f: 	andq	$-0x2, %rax
+    00000053: 	leaq	(%rdi,%rax,8), %rdi
+    00000057: 	cmpq	%rax, %rcx
+    0000005a: 	je	.Ltmp43 # Offset: 90
+.Ltmp44:
+    0000005c: 	movsd	%xmm0, (%rdi)
+.Ltmp43:
+    00000060: 	retq # Offset: 96
+DWARF CFI Instructions:
+    <empty>
+End of Function "fill"
+
+Binary Function "test1" after disassembly {
+  Number      : 18
+  State       : disassembled
+  Address     : 0x1c20
+  Size        : 0x1bb
+  MaxSize     : 0x1c0
+  Offset      : 0x1c20
+  Section     : .text
+  Orc Section : .local.text.test1
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB017:
+    00000000: 	endbr64
+    00000004: 	pushq	%r15
+    00000006: 	pushq	%r14
+    00000008: 	pushq	%r13
+    0000000a: 	pushq	%r12
+    0000000c: 	movq	%rdx, %r12
+    0000000f: 	pushq	%rbp
+    00000010: 	pushq	%rbx
+    00000011: 	subq	$0x38, %rsp
+    00000015: 	movq	%rdi, 0x8(%rsp)
+    0000001a: 	movl	%esi, 0x14(%rsp)
+    0000001e: 	movq	%rcx, 0x18(%rsp)
+    00000023: 	movq	%fs:0x28, %rax
+    0000002c: 	movq	%rax, 0x28(%rsp)
+    00000031: 	xorl	%eax, %eax
+    00000033: 	callq	clock@PLT # Offset: 51
+    00000038: 	movl	iterations(%rip), %edx
+    0000003e: 	movq	%rax, start_time(%rip)
+    00000045: 	testl	%edx, %edx
+    00000047: 	jle	.Ltmp46 # Offset: 71
+    0000004d: 	movl	0x14(%rsp), %eax
+    00000051: 	movq	0x8(%rsp), %rcx
+    00000056: 	xorl	%r14d, %r14d
+    00000059: 	subl	$0x1, %eax
+    0000005c: 	leaq	0x8(%rcx,%rax,8), %r13
+    00000061: 	nopl	(%rax) # Size: 7
+.Ltmp52:
+    00000068: 	movq	$0x0, 0x20(%rsp)
+    00000071: 	movl	0x14(%rsp), %eax
+    00000075: 	testl	%eax, %eax
+    00000077: 	jle	.Ltmp47 # Offset: 119
+    0000007d: 	movq	0x8(%rsp), %r15
+    00000082: 	xorl	%ebx, %ebx
+    00000084: 	leaq	0x20(%rsp), %rbp
+    00000089: 	nopl	(%rax) # Size: 7
+.Ltmp48:
+    00000090: 	movsd	(%r15), %xmm0
+    00000095: 	movq	%rbp, %rdi
+    00000098: 	addq	$0x8, %r15
+    0000009c: 	callq	*%r12 # Offset: 156
+    0000009f: 	addl	%eax, %ebx
+    000000a1: 	cmpq	%r13, %r15
+    000000a4: 	jne	.Ltmp48 # Offset: 164
+    000000a6: 	cmpl	$0x7d0, %ebx
+    000000ac: 	movsd	0x20(%rsp), %xmm1
+    000000b2: 	setne	%bpl
+    000000b6: 	cmpl	$0x7cf, %ebx
+    000000bc: 	jle	.Ltmp49 # Offset: 188
+.Ltmp55:
+    000000c2: 	movq	0x8(%rsp), %rax
+    000000c7: 	pxor	%xmm2, %xmm2
+    000000cb: 	comisd	(%rax), %xmm2
+    000000cf: 	jbe	.Ltmp50 # Offset: 207
+    000000d1: 	testb	%bpl, %bpl
+    000000d4: 	jne	.Ltmp51 # Offset: 212
+.Ltmp50:
+    000000da: 	addl	$0x1, %r14d
+    000000de: 	cmpl	%r14d, iterations(%rip)
+    000000e5: 	jg	.Ltmp52 # Offset: 229
+.Ltmp46:
+    000000e7: 	callq	clock@PLT # Offset: 231
+    000000ec: 	movq	%rax, end_time(%rip)
+    000000f3: 	movq	0x28(%rsp), %rdx
+    000000f8: 	subq	%fs:0x28, %rdx
+    00000101: 	jne	.Ltmp53 # Offset: 257
+    00000107: 	subq	start_time(%rip), %rax
+    0000010e: 	pxor	%xmm0, %xmm0
+    00000112: 	movq	0x18(%rsp), %rdi
+    00000117: 	cvtsi2sd	%rax, %xmm0
+    0000011c: 	divsd	DATAat0x32b0(%rip), %xmm0
+    00000124: 	addq	$0x38, %rsp
+    00000128: 	popq	%rbx
+    00000129: 	popq	%rbp
+    0000012a: 	popq	%r12
+    0000012c: 	popq	%r13
+    0000012e: 	popq	%r14
+    00000130: 	popq	%r15
+    00000132: 	jmp	record_result # TAILCALL  # Offset: 306
+    00000137: 	nopw	(%rax,%rax) # Size: 9
+.Ltmp47:
+    00000140: 	movl	$0x1, %ebp
+    00000145: 	pxor	%xmm1, %xmm1
+.Ltmp49:
+    00000149: 	movsd	DATAat0x32c0(%rip), %xmm0
+    00000151: 	mulsd	init_value(%rip), %xmm0
+    00000159: 	ucomisd	%xmm1, %xmm0
+    0000015d: 	jp	.Ltmp54 # Offset: 349
+    0000015f: 	je	.Ltmp55 # Offset: 351
+.Ltmp54:
+    00000165: 	movq	0x18(%rsp), %rdx
+    0000016a: 	leaq	DATAat0x3178(%rip), %rsi
+    00000171: 	movl	$0x1, %edi
+    00000176: 	xorl	%eax, %eax
+    00000178: 	callq	__printf_chk@PLT # Offset: 376
+    0000017d: 	jmp	.Ltmp55 # Offset: 381
+    00000182: 	nopw	(%rax,%rax) # Size: 6
+.Ltmp51:
+    00000188: 	movq	0x18(%rsp), %rdx
+    0000018d: 	xorl	%eax, %eax
+    0000018f: 	movl	$0x1, %edi
+    00000194: 	addl	$0x1, %r14d
+    00000198: 	leaq	DATAat0x318f(%rip), %rsi
+    0000019f: 	callq	__printf_chk@PLT # Offset: 415
+    000001a4: 	cmpl	iterations(%rip), %r14d
+    000001ab: 	jl	.Ltmp52 # Offset: 427
+    000001b1: 	jmp	.Ltmp46 # Offset: 433
+.Ltmp53:
+    000001b6: 	callq	__stack_chk_fail@PLT # Offset: 438
+DWARF CFI Instructions:
+    <empty>
+End of Function "test1"
+
+Binary Function "sum1_middle6" after disassembly {
+  Number      : 19
+  State       : disassembled
+  Address     : 0x1de0
+  Size        : 0x16
+  MaxSize     : 0x20
+  Offset      : 0x1de0
+  Section     : .text
+  Orc Section : .local.text.sum1_middle6
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB018:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32a8(%rip), %xmm1
+    00000010: 	movsd	%xmm1, (%rdi)
+    00000014: 	jmpq	*%rsi # UNKNOWN CONTROL FLOW # Offset: 20
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_middle6"
+
+Binary Function "sum1_middle5" after disassembly {
+  Number      : 20
+  State       : disassembled
+  Address     : 0x1e00
+  Size        : 0x2c
+  MaxSize     : 0x30
+  Offset      : 0x1e00
+  Section     : .text
+  Orc Section : .local.text.sum1_middle5
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB019:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32a8(%rip), %xmm1
+    00000010: 	pushq	%rbx
+    00000011: 	movq	%rdi, %rbx
+    00000014: 	movsd	%xmm1, (%rdi)
+    00000018: 	callq	*%rsi # Offset: 24
+    0000001a: 	movsd	DATAat0x32a8(%rip), %xmm0
+    00000022: 	addsd	(%rbx), %xmm0
+    00000026: 	movsd	%xmm0, (%rbx)
+    0000002a: 	popq	%rbx
+    0000002b: 	retq # Offset: 43
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_middle5"
+
+Binary Function "sum1_middle4" after disassembly {
+  Number      : 21
+  State       : disassembled
+  Address     : 0x1e30
+  Size        : 0x34
+  MaxSize     : 0x40
+  Offset      : 0x1e30
+  Section     : .text
+  Orc Section : .local.text.sum1_middle4
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB020:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32c8(%rip), %xmm1
+    00000010: 	pushq	%rbx
+    00000011: 	movq	%rdi, %rbx
+    00000014: 	subsd	DATAat0x32a8(%rip), %xmm1
+    0000001c: 	movsd	%xmm1, (%rdi)
+    00000020: 	callq	*%rsi # Offset: 32
+    00000022: 	movsd	DATAat0x32a8(%rip), %xmm0
+    0000002a: 	addsd	(%rbx), %xmm0
+    0000002e: 	movsd	%xmm0, (%rbx)
+    00000032: 	popq	%rbx
+    00000033: 	retq # Offset: 51
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_middle4"
+
+Binary Function "sum1_middle3" after disassembly {
+  Number      : 22
+  State       : disassembled
+  Address     : 0x1e70
+  Size        : 0x3c
+  MaxSize     : 0x40
+  Offset      : 0x1e70
+  Section     : .text
+  Orc Section : .local.text.sum1_middle3
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB021:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32c8(%rip), %xmm1
+    00000010: 	pushq	%rbx
+    00000011: 	movq	%rdi, %rbx
+    00000014: 	subsd	DATAat0x32a8(%rip), %xmm1
+    0000001c: 	movsd	%xmm1, (%rdi)
+    00000020: 	callq	*%rsi # Offset: 32
+    00000022: 	movsd	DATAat0x32a8(%rip), %xmm0
+    0000002a: 	addsd	(%rbx), %xmm0
+    0000002e: 	addsd	DATAat0x32c8(%rip), %xmm0
+    00000036: 	movsd	%xmm0, (%rbx)
+    0000003a: 	popq	%rbx
+    0000003b: 	retq # Offset: 59
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_middle3"
+
+Binary Function "sum1_middle2" after disassembly {
+  Number      : 23
+  State       : disassembled
+  Address     : 0x1eb0
+  Size        : 0x44
+  MaxSize     : 0x50
+  Offset      : 0x1eb0
+  Section     : .text
+  Orc Section : .local.text.sum1_middle2
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB022:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32d0(%rip), %xmm1
+    00000010: 	pushq	%rbx
+    00000011: 	movq	%rdi, %rbx
+    00000014: 	subsd	DATAat0x32c8(%rip), %xmm1
+    0000001c: 	subsd	DATAat0x32a8(%rip), %xmm1
+    00000024: 	movsd	%xmm1, (%rdi)
+    00000028: 	callq	*%rsi # Offset: 40
+    0000002a: 	movsd	DATAat0x32a8(%rip), %xmm0
+    00000032: 	addsd	(%rbx), %xmm0
+    00000036: 	addsd	DATAat0x32c8(%rip), %xmm0
+    0000003e: 	movsd	%xmm0, (%rbx)
+    00000042: 	popq	%rbx
+    00000043: 	retq # Offset: 67
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_middle2"
+
+Binary Function "sum1_middle1" after disassembly {
+  Number      : 24
+  State       : disassembled
+  Address     : 0x1f00
+  Size        : 0x4c
+  MaxSize     : 0x50
+  Offset      : 0x1f00
+  Section     : .text
+  Orc Section : .local.text.sum1_middle1
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB023:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32d0(%rip), %xmm1
+    00000010: 	pushq	%rbx
+    00000011: 	movq	%rdi, %rbx
+    00000014: 	subsd	DATAat0x32c8(%rip), %xmm1
+    0000001c: 	subsd	DATAat0x32a8(%rip), %xmm1
+    00000024: 	movsd	%xmm1, (%rdi)
+    00000028: 	callq	*%rsi # Offset: 40
+    0000002a: 	movsd	DATAat0x32a8(%rip), %xmm0
+    00000032: 	addsd	(%rbx), %xmm0
+    00000036: 	addsd	DATAat0x32c8(%rip), %xmm0
+    0000003e: 	addsd	DATAat0x32d0(%rip), %xmm0
+    00000046: 	movsd	%xmm0, (%rbx)
+    0000004a: 	popq	%rbx
+    0000004b: 	retq # Offset: 75
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_middle1"
+
+Binary Function "test1_deep" after disassembly {
+  Number      : 25
+  State       : disassembled
+  Address     : 0x1f50
+  Size        : 0x1fb
+  MaxSize     : 0x200
+  Offset      : 0x1f50
+  Section     : .text
+  Orc Section : .local.text.test1_deep
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB024:
+    00000000: 	endbr64
+    00000004: 	pushq	%r15
+    00000006: 	pushq	%r14
+    00000008: 	pushq	%r13
+    0000000a: 	pushq	%r12
+    0000000c: 	movq	%rdx, %r12
+    0000000f: 	pushq	%rbp
+    00000010: 	pushq	%rbx
+    00000011: 	subq	$0x38, %rsp
+    00000015: 	movq	%rdi, 0x8(%rsp)
+    0000001a: 	movl	%esi, 0x14(%rsp)
+    0000001e: 	movq	%rcx, 0x18(%rsp)
+    00000023: 	movq	%fs:0x28, %rax
+    0000002c: 	movq	%rax, 0x28(%rsp)
+    00000031: 	xorl	%eax, %eax
+    00000033: 	callq	clock@PLT # Offset: 51
+    00000038: 	movl	iterations(%rip), %edx
+    0000003e: 	movq	%rax, start_time(%rip)
+    00000045: 	testl	%edx, %edx
+    00000047: 	jle	.Ltmp56 # Offset: 71
+    0000004d: 	movl	0x14(%rsp), %eax
+    00000051: 	movq	0x8(%rsp), %rcx
+    00000056: 	xorl	%r14d, %r14d
+    00000059: 	subl	$0x1, %eax
+    0000005c: 	leaq	0x8(%rcx,%rax,8), %r13
+    00000061: 	nopl	(%rax) # Size: 7
+.Ltmp62:
+    00000068: 	movq	$0x0, 0x20(%rsp)
+    00000071: 	movl	0x14(%rsp), %eax
+    00000075: 	testl	%eax, %eax
+    00000077: 	jle	.Ltmp57 # Offset: 119
+    0000007d: 	movq	0x8(%rsp), %r15
+    00000082: 	pxor	%xmm0, %xmm0
+    00000086: 	xorl	%ebx, %ebx
+    00000088: 	leaq	0x20(%rsp), %rbp
+    0000008d: 	nopl	(%rax) # Size: 3
+.Ltmp58:
+    00000090: 	subsd	DATAat0x32d0(%rip), %xmm0
+    00000098: 	movsd	(%r15), %xmm1
+    0000009d: 	movq	%rbp, %rdi
+    000000a0: 	addq	$0x8, %r15
+    000000a4: 	subsd	DATAat0x32c8(%rip), %xmm0
+    000000ac: 	subsd	DATAat0x32a8(%rip), %xmm0
+    000000b4: 	movsd	%xmm0, 0x20(%rsp)
+    000000ba: 	movapd	%xmm1, %xmm0
+    000000be: 	callq	*%r12 # Offset: 190
+    000000c1: 	movsd	DATAat0x32a8(%rip), %xmm0
+    000000c9: 	addsd	0x20(%rsp), %xmm0
+    000000cf: 	addsd	DATAat0x32c8(%rip), %xmm0
+    000000d7: 	addsd	DATAat0x32d0(%rip), %xmm0
+    000000df: 	addl	%eax, %ebx
+    000000e1: 	movsd	%xmm0, 0x20(%rsp)
+    000000e7: 	cmpq	%r15, %r13
+    000000ea: 	jne	.Ltmp58 # Offset: 234
+    000000ec: 	cmpl	$0x7d0, %ebx
+    000000f2: 	setne	%bpl
+    000000f6: 	cmpl	$0x7cf, %ebx
+    000000fc: 	jle	.Ltmp59 # Offset: 252
+.Ltmp65:
+    00000102: 	movq	0x8(%rsp), %rax
+    00000107: 	pxor	%xmm2, %xmm2
+    0000010b: 	comisd	(%rax), %xmm2
+    0000010f: 	jbe	.Ltmp60 # Offset: 271
+    00000111: 	testb	%bpl, %bpl
+    00000114: 	jne	.Ltmp61 # Offset: 276
+.Ltmp60:
+    0000011a: 	addl	$0x1, %r14d
+    0000011e: 	cmpl	%r14d, iterations(%rip)
+    00000125: 	jg	.Ltmp62 # Offset: 293
+.Ltmp56:
+    0000012b: 	callq	clock@PLT # Offset: 299
+    00000130: 	movq	%rax, end_time(%rip)
+    00000137: 	movq	0x28(%rsp), %rdx
+    0000013c: 	subq	%fs:0x28, %rdx
+    00000145: 	jne	.Ltmp63 # Offset: 325
+    0000014b: 	subq	start_time(%rip), %rax
+    00000152: 	pxor	%xmm0, %xmm0
+    00000156: 	movq	0x18(%rsp), %rdi
+    0000015b: 	cvtsi2sd	%rax, %xmm0
+    00000160: 	divsd	DATAat0x32b0(%rip), %xmm0
+    00000168: 	addq	$0x38, %rsp
+    0000016c: 	popq	%rbx
+    0000016d: 	popq	%rbp
+    0000016e: 	popq	%r12
+    00000170: 	popq	%r13
+    00000172: 	popq	%r14
+    00000174: 	popq	%r15
+    00000176: 	jmp	record_result # TAILCALL  # Offset: 374
+    0000017b: 	nopl	(%rax,%rax) # Size: 5
+.Ltmp57:
+    00000180: 	movl	$0x1, %ebp
+    00000185: 	pxor	%xmm0, %xmm0
+.Ltmp59:
+    00000189: 	movsd	DATAat0x32c0(%rip), %xmm1
+    00000191: 	mulsd	init_value(%rip), %xmm1
+    00000199: 	ucomisd	%xmm0, %xmm1
+    0000019d: 	jp	.Ltmp64 # Offset: 413
+    0000019f: 	je	.Ltmp65 # Offset: 415
+.Ltmp64:
+    000001a5: 	movq	0x18(%rsp), %rdx
+    000001aa: 	leaq	DATAat0x3178(%rip), %rsi
+    000001b1: 	movl	$0x1, %edi
+    000001b6: 	xorl	%eax, %eax
+    000001b8: 	callq	__printf_chk@PLT # Offset: 440
+    000001bd: 	jmp	.Ltmp65 # Offset: 445
+    000001c2: 	nopw	(%rax,%rax) # Size: 6
+.Ltmp61:
+    000001c8: 	movq	0x18(%rsp), %rdx
+    000001cd: 	xorl	%eax, %eax
+    000001cf: 	movl	$0x1, %edi
+    000001d4: 	addl	$0x1, %r14d
+    000001d8: 	leaq	DATAat0x318f(%rip), %rsi
+    000001df: 	callq	__printf_chk@PLT # Offset: 479
+    000001e4: 	cmpl	%r14d, iterations(%rip)
+    000001eb: 	jg	.Ltmp62 # Offset: 491
+    000001f1: 	jmp	.Ltmp56 # Offset: 497
+.Ltmp63:
+    000001f6: 	callq	__stack_chk_fail@PLT # Offset: 502
+DWARF CFI Instructions:
+    <empty>
+End of Function "test1_deep"
+
+Binary Function "test1_longjmp" after disassembly {
+  Number      : 26
+  State       : disassembled
+  Address     : 0x2150
+  Size        : 0x1c2
+  MaxSize     : 0x1d0
+  Offset      : 0x2150
+  Section     : .text
+  Orc Section : .local.text.test1_longjmp
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB025:
+    00000000: 	endbr64
+    00000004: 	subq	$0x118, %rsp
+    0000000b: 	movq	%rdi, 0x10(%rsp)
+    00000010: 	movl	%esi, 0x4(%rsp)
+    00000014: 	movq	%rdx, 0x20(%rsp)
+    00000019: 	movq	%rcx, 0x8(%rsp)
+    0000001e: 	movq	%fs:0x28, %rax
+    00000027: 	movq	%rax, 0x108(%rsp)
+    0000002f: 	xorl	%eax, %eax
+    00000031: 	callq	clock@PLT # Offset: 49
+    00000036: 	movl	$0x0, (%rsp)
+    0000003d: 	movq	%rax, start_time(%rip)
+.Ltmp73:
+    00000044: 	movl	(%rsp), %eax
+    00000047: 	cmpl	%eax, iterations(%rip)
+    0000004d: 	jg	.Ltmp66 # Offset: 77
+    0000004f: 	callq	clock@PLT # Offset: 79
+    00000054: 	movq	0x8(%rsp), %rdi
+    00000059: 	pxor	%xmm0, %xmm0
+    0000005d: 	movq	%rax, end_time(%rip)
+    00000064: 	subq	start_time(%rip), %rax
+    0000006b: 	cvtsi2sd	%rax, %xmm0
+    00000070: 	divsd	DATAat0x32b0(%rip), %xmm0
+    00000078: 	callq	record_result # Offset: 120
+    0000007d: 	movq	0x108(%rsp), %rax
+    00000085: 	subq	%fs:0x28, %rax
+    0000008e: 	jne	.Ltmp67 # Offset: 142
+    00000094: 	addq	$0x118, %rsp
+    0000009b: 	retq # Offset: 155
+    0000009c: 	nopl	(%rax) # Size: 4
+.Ltmp66:
+    000000a0: 	movq	$0x0, 0x38(%rsp)
+    000000a9: 	movl	0x4(%rsp), %eax
+    000000ad: 	testl	%eax, %eax
+    000000af: 	jle	.Ltmp68 # Offset: 175
+    000000b5: 	leaq	0x40(%rsp), %rax
+    000000ba: 	movl	$0x0, 0x18(%rsp)
+    000000c2: 	movl	$0x0, 0x1c(%rsp)
+    000000ca: 	movq	%rax, 0x28(%rsp)
+.Ltmp70:
+    000000cf: 	movq	0x28(%rsp), %rdi
+    000000d4: 	callq	_setjmp@PLT # Offset: 212
+    000000d9: 	endbr64
+    000000dd: 	testl	%eax, %eax
+    000000df: 	je	.Ltmp69 # Offset: 223
+    000000e1: 	addl	$0x1, 0x1c(%rsp)
+.Ltmp74:
+    000000e6: 	addl	$0x1, 0x18(%rsp)
+    000000eb: 	movl	0x18(%rsp), %eax
+    000000ef: 	cmpl	%eax, 0x4(%rsp)
+    000000f3: 	jg	.Ltmp70 # Offset: 243
+    000000f5: 	cmpl	$0x7cf, 0x1c(%rsp)
+    000000fd: 	jle	.Ltmp71 # Offset: 253
+.Ltmp76:
+    00000103: 	movq	0x10(%rsp), %rax
+    00000108: 	pxor	%xmm2, %xmm2
+    0000010c: 	comisd	(%rax), %xmm2
+    00000110: 	jbe	.Ltmp72 # Offset: 272
+    00000112: 	cmpl	$0x7d0, 0x1c(%rsp)
+    0000011a: 	je	.Ltmp72 # Offset: 282
+    0000011c: 	movq	0x8(%rsp), %rdx
+    00000121: 	leaq	DATAat0x318f(%rip), %rsi
+    00000128: 	movl	$0x1, %edi
+    0000012d: 	xorl	%eax, %eax
+    0000012f: 	callq	__printf_chk@PLT # Offset: 303
+.Ltmp72:
+    00000134: 	addl	$0x1, (%rsp)
+    00000138: 	jmp	.Ltmp73 # Offset: 312
+    0000013d: 	nopl	(%rax) # Size: 3
+.Ltmp69:
+    00000140: 	movq	0x28(%rsp), %rax
+    00000145: 	movq	0x10(%rsp), %rdx
+    0000014a: 	leaq	0x38(%rsp), %rdi
+    0000014f: 	movq	%rax, "gLastJmp/1"(%rip)
+    00000156: 	movslq	0x18(%rsp), %rax
+    0000015b: 	movsd	(%rdx,%rax,8), %xmm0
+    00000160: 	movq	0x20(%rsp), %rax
+    00000165: 	callq	*%rax # Offset: 357
+    00000167: 	jmp	.Ltmp74 # Offset: 359
+    0000016c: 	nopl	(%rax) # Size: 4
+.Ltmp68:
+    00000170: 	movl	$0x0, 0x1c(%rsp)
+    00000178: 	pxor	%xmm0, %xmm0
+.Ltmp77:
+    0000017c: 	movsd	DATAat0x32c0(%rip), %xmm1
+    00000184: 	mulsd	init_value(%rip), %xmm1
+    0000018c: 	ucomisd	%xmm0, %xmm1
+    00000190: 	jp	.Ltmp75 # Offset: 400
+    00000192: 	je	.Ltmp76 # Offset: 402
+.Ltmp75:
+    00000198: 	movq	0x8(%rsp), %rdx
+    0000019d: 	leaq	DATAat0x3178(%rip), %rsi
+    000001a4: 	movl	$0x1, %edi
+    000001a9: 	xorl	%eax, %eax
+    000001ab: 	callq	__printf_chk@PLT # Offset: 427
+    000001b0: 	jmp	.Ltmp76 # Offset: 432
+.Ltmp67:
+    000001b5: 	callq	__stack_chk_fail@PLT # Offset: 437
+.Ltmp71:
+    000001ba: 	movsd	0x38(%rsp), %xmm0
+    000001c0: 	jmp	.Ltmp77 # Offset: 448
+DWARF CFI Instructions:
+    <empty>
+End of Function "test1_longjmp"
+
+Binary Function "sum1_longjmp_middle6" after disassembly {
+  Number      : 27
+  State       : disassembled
+  Address     : 0x2320
+  Size        : 0x16
+  MaxSize     : 0x20
+  Offset      : 0x2320
+  Section     : .text
+  Orc Section : .local.text.sum1_longjmp_middle6
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB026:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32a8(%rip), %xmm1
+    00000010: 	movsd	%xmm1, (%rdi)
+    00000014: 	jmpq	*%rsi # UNKNOWN CONTROL FLOW # Offset: 20
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_longjmp_middle6"
+
+Binary Function "sum1_longjmp_middle5" after disassembly {
+  Number      : 28
+  State       : disassembled
+  Address     : 0x2340
+  Size        : 0x2c
+  MaxSize     : 0x30
+  Offset      : 0x2340
+  Section     : .text
+  Orc Section : .local.text.sum1_longjmp_middle5
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB027:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32a8(%rip), %xmm1
+    00000010: 	pushq	%rbx
+    00000011: 	movq	%rdi, %rbx
+    00000014: 	movsd	%xmm1, (%rdi)
+    00000018: 	callq	*%rsi # Offset: 24
+    0000001a: 	movsd	DATAat0x32a8(%rip), %xmm0
+    00000022: 	addsd	(%rbx), %xmm0
+    00000026: 	movsd	%xmm0, (%rbx)
+    0000002a: 	popq	%rbx
+    0000002b: 	retq # Offset: 43
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_longjmp_middle5"
+
+Binary Function "sum1_longjmp_middle4" after disassembly {
+  Number      : 29
+  State       : disassembled
+  Address     : 0x2370
+  Size        : 0x34
+  MaxSize     : 0x40
+  Offset      : 0x2370
+  Section     : .text
+  Orc Section : .local.text.sum1_longjmp_middle4
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB028:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32c8(%rip), %xmm1
+    00000010: 	pushq	%rbx
+    00000011: 	movq	%rdi, %rbx
+    00000014: 	subsd	DATAat0x32a8(%rip), %xmm1
+    0000001c: 	movsd	%xmm1, (%rdi)
+    00000020: 	callq	*%rsi # Offset: 32
+    00000022: 	movsd	DATAat0x32a8(%rip), %xmm0
+    0000002a: 	addsd	(%rbx), %xmm0
+    0000002e: 	movsd	%xmm0, (%rbx)
+    00000032: 	popq	%rbx
+    00000033: 	retq # Offset: 51
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_longjmp_middle4"
+
+Binary Function "sum1_longjmp_middle3" after disassembly {
+  Number      : 30
+  State       : disassembled
+  Address     : 0x23b0
+  Size        : 0x3c
+  MaxSize     : 0x40
+  Offset      : 0x23b0
+  Section     : .text
+  Orc Section : .local.text.sum1_longjmp_middle3
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB029:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32c8(%rip), %xmm1
+    00000010: 	pushq	%rbx
+    00000011: 	movq	%rdi, %rbx
+    00000014: 	subsd	DATAat0x32a8(%rip), %xmm1
+    0000001c: 	movsd	%xmm1, (%rdi)
+    00000020: 	callq	*%rsi # Offset: 32
+    00000022: 	movsd	DATAat0x32a8(%rip), %xmm0
+    0000002a: 	addsd	(%rbx), %xmm0
+    0000002e: 	addsd	DATAat0x32c8(%rip), %xmm0
+    00000036: 	movsd	%xmm0, (%rbx)
+    0000003a: 	popq	%rbx
+    0000003b: 	retq # Offset: 59
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_longjmp_middle3"
+
+Binary Function "sum1_longjmp_middle2" after disassembly {
+  Number      : 31
+  State       : disassembled
+  Address     : 0x23f0
+  Size        : 0x44
+  MaxSize     : 0x50
+  Offset      : 0x23f0
+  Section     : .text
+  Orc Section : .local.text.sum1_longjmp_middle2
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB030:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32d0(%rip), %xmm1
+    00000010: 	pushq	%rbx
+    00000011: 	movq	%rdi, %rbx
+    00000014: 	subsd	DATAat0x32c8(%rip), %xmm1
+    0000001c: 	subsd	DATAat0x32a8(%rip), %xmm1
+    00000024: 	movsd	%xmm1, (%rdi)
+    00000028: 	callq	*%rsi # Offset: 40
+    0000002a: 	movsd	DATAat0x32a8(%rip), %xmm0
+    00000032: 	addsd	(%rbx), %xmm0
+    00000036: 	addsd	DATAat0x32c8(%rip), %xmm0
+    0000003e: 	movsd	%xmm0, (%rbx)
+    00000042: 	popq	%rbx
+    00000043: 	retq # Offset: 67
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_longjmp_middle2"
+
+Binary Function "sum1_longjmp_middle1" after disassembly {
+  Number      : 32
+  State       : disassembled
+  Address     : 0x2440
+  Size        : 0x4c
+  MaxSize     : 0x50
+  Offset      : 0x2440
+  Section     : .text
+  Orc Section : .local.text.sum1_longjmp_middle1
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB031:
+    00000000: 	endbr64
+    00000004: 	movsd	(%rdi), %xmm1
+    00000008: 	subsd	DATAat0x32d0(%rip), %xmm1
+    00000010: 	pushq	%rbx
+    00000011: 	movq	%rdi, %rbx
+    00000014: 	subsd	DATAat0x32c8(%rip), %xmm1
+    0000001c: 	subsd	DATAat0x32a8(%rip), %xmm1
+    00000024: 	movsd	%xmm1, (%rdi)
+    00000028: 	callq	*%rsi # Offset: 40
+    0000002a: 	movsd	DATAat0x32a8(%rip), %xmm0
+    00000032: 	addsd	(%rbx), %xmm0
+    00000036: 	addsd	DATAat0x32c8(%rip), %xmm0
+    0000003e: 	addsd	DATAat0x32d0(%rip), %xmm0
+    00000046: 	movsd	%xmm0, (%rbx)
+    0000004a: 	popq	%rbx
+    0000004b: 	retq # Offset: 75
+DWARF CFI Instructions:
+    <empty>
+End of Function "sum1_longjmp_middle1"
+
+Binary Function "test1_longjmp_deep" after disassembly {
+  Number      : 33
+  State       : disassembled
+  Address     : 0x2490
+  Size        : 0x212
+  MaxSize     : 0x212
+  Offset      : 0x2490
+  Section     : .text
+  Orc Section : .local.text.test1_longjmp_deep
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB032:
+    00000000: 	endbr64
+    00000004: 	subq	$0x118, %rsp
+    0000000b: 	movq	%rdi, 0x10(%rsp)
+    00000010: 	movl	%esi, 0x4(%rsp)
+    00000014: 	movq	%rdx, 0x20(%rsp)
+    00000019: 	movq	%rcx, 0x8(%rsp)
+    0000001e: 	movq	%fs:0x28, %rax
+    00000027: 	movq	%rax, 0x108(%rsp)
+    0000002f: 	xorl	%eax, %eax
+    00000031: 	callq	clock@PLT # Offset: 49
+    00000036: 	movl	$0x0, (%rsp)
+    0000003d: 	movq	%rax, start_time(%rip)
+.Ltmp85:
+    00000044: 	movl	(%rsp), %eax
+    00000047: 	cmpl	%eax, iterations(%rip)
+    0000004d: 	jg	.Ltmp78 # Offset: 77
+    0000004f: 	callq	clock@PLT # Offset: 79
+    00000054: 	movq	0x8(%rsp), %rdi
+    00000059: 	pxor	%xmm0, %xmm0
+    0000005d: 	movq	%rax, end_time(%rip)
+    00000064: 	subq	start_time(%rip), %rax
+    0000006b: 	cvtsi2sd	%rax, %xmm0
+    00000070: 	divsd	DATAat0x32b0(%rip), %xmm0
+    00000078: 	callq	record_result # Offset: 120
+    0000007d: 	movq	0x108(%rsp), %rax
+    00000085: 	subq	%fs:0x28, %rax
+    0000008e: 	jne	.Ltmp79 # Offset: 142
+    00000094: 	addq	$0x118, %rsp
+    0000009b: 	retq # Offset: 155
+    0000009c: 	nopl	(%rax) # Size: 4
+.Ltmp78:
+    000000a0: 	movq	$0x0, 0x38(%rsp)
+    000000a9: 	movl	0x4(%rsp), %eax
+    000000ad: 	testl	%eax, %eax
+    000000af: 	jle	.Ltmp80 # Offset: 175
+    000000b5: 	leaq	0x40(%rsp), %rax
+    000000ba: 	movl	$0x0, 0x18(%rsp)
+    000000c2: 	movl	$0x0, 0x1c(%rsp)
+    000000ca: 	movq	%rax, 0x28(%rsp)
+.Ltmp82:
+    000000cf: 	movq	0x28(%rsp), %rdi
+    000000d4: 	callq	_setjmp@PLT # Offset: 212
+    000000d9: 	endbr64
+    000000dd: 	testl	%eax, %eax
+    000000df: 	je	.Ltmp81 # Offset: 223
+    000000e1: 	addl	$0x1, 0x1c(%rsp)
+.Ltmp86:
+    000000e6: 	addl	$0x1, 0x18(%rsp)
+    000000eb: 	movl	0x18(%rsp), %eax
+    000000ef: 	cmpl	%eax, 0x4(%rsp)
+    000000f3: 	jg	.Ltmp82 # Offset: 243
+    000000f5: 	cmpl	$0x7cf, 0x1c(%rsp)
+    000000fd: 	jle	.Ltmp83 # Offset: 253
+.Ltmp88:
+    00000103: 	movq	0x10(%rsp), %rax
+    00000108: 	pxor	%xmm0, %xmm0
+    0000010c: 	comisd	(%rax), %xmm0
+    00000110: 	jbe	.Ltmp84 # Offset: 272
+    00000112: 	cmpl	$0x7d0, 0x1c(%rsp)
+    0000011a: 	je	.Ltmp84 # Offset: 282
+    0000011c: 	movq	0x8(%rsp), %rdx
+    00000121: 	leaq	DATAat0x318f(%rip), %rsi
+    00000128: 	movl	$0x1, %edi
+    0000012d: 	xorl	%eax, %eax
+    0000012f: 	callq	__printf_chk@PLT # Offset: 303
+.Ltmp84:
+    00000134: 	addl	$0x1, (%rsp)
+    00000138: 	jmp	.Ltmp85 # Offset: 312
+    0000013d: 	nopl	(%rax) # Size: 3
+.Ltmp81:
+    00000140: 	movq	0x28(%rsp), %rax
+    00000145: 	movq	0x10(%rsp), %rdx
+    0000014a: 	leaq	0x38(%rsp), %rdi
+    0000014f: 	movsd	0x38(%rsp), %xmm0
+    00000155: 	subsd	DATAat0x32d0(%rip), %xmm0
+    0000015d: 	movq	%rax, "gLastJmp/1"(%rip)
+    00000164: 	movslq	0x18(%rsp), %rax
+    00000169: 	subsd	DATAat0x32c8(%rip), %xmm0
+    00000171: 	subsd	DATAat0x32a8(%rip), %xmm0
+    00000179: 	movsd	(%rdx,%rax,8), %xmm1
+    0000017e: 	movq	0x20(%rsp), %rax
+    00000183: 	movsd	%xmm0, 0x38(%rsp)
+    00000189: 	movapd	%xmm1, %xmm0
+    0000018d: 	callq	*%rax # Offset: 397
+    0000018f: 	movsd	DATAat0x32a8(%rip), %xmm0
+    00000197: 	addsd	0x38(%rsp), %xmm0
+    0000019d: 	addsd	DATAat0x32c8(%rip), %xmm0
+    000001a5: 	addsd	DATAat0x32d0(%rip), %xmm0
+    000001ad: 	movsd	%xmm0, 0x38(%rsp)
+    000001b3: 	jmp	.Ltmp86 # Offset: 435
+    000001b8: 	nopl	(%rax,%rax) # Size: 8
+.Ltmp80:
+    000001c0: 	movl	$0x0, 0x1c(%rsp)
+    000001c8: 	pxor	%xmm0, %xmm0
+.Ltmp89:
+    000001cc: 	movsd	DATAat0x32c0(%rip), %xmm1
+    000001d4: 	mulsd	init_value(%rip), %xmm1
+    000001dc: 	ucomisd	%xmm0, %xmm1
+    000001e0: 	jp	.Ltmp87 # Offset: 480
+    000001e2: 	je	.Ltmp88 # Offset: 482
+.Ltmp87:
+    000001e8: 	movq	0x8(%rsp), %rdx
+    000001ed: 	leaq	DATAat0x3178(%rip), %rsi
+    000001f4: 	movl	$0x1, %edi
+    000001f9: 	xorl	%eax, %eax
+    000001fb: 	callq	__printf_chk@PLT # Offset: 507
+    00000200: 	jmp	.Ltmp88 # Offset: 512
+.Ltmp79:
+    00000205: 	callq	__stack_chk_fail@PLT # Offset: 517
+.Ltmp83:
+    0000020a: 	movsd	0x38(%rsp), %xmm0
+    00000210: 	jmp	.Ltmp89 # Offset: 528
+DWARF CFI Instructions:
+    <empty>
+End of Function "test1_longjmp_deep"
+
+Binary Function "_fini" after disassembly {
+  Number      : 34
+  State       : disassembled
+  Address     : 0x26a4
+  Size        : 0xd
+  MaxSize     : 0xd
+  Offset      : 0x26a4
+  Section     : .fini
+  Orc Section : .local.text._fini
+  LSDA        : 0x0
+  IsSimple    : 1
+  IsMultiEntry: 0
+  IsSplit     : 0
+  BB Count    : 0
+}
+.LBB033:
+    00000000: 	endbr64
+    00000004: 	subq	$0x8, %rsp
+    00000008: 	addq	$0x8, %rsp
+    0000000c: 	retq # Offset: 12
+DWARF CFI Instructions:
+    <empty>
+End of Function "_fini"
+
+BOLT-INFO: 0 out of 35 functions in the binary (0.0%) have non-empty execution profile
+BOLT-INFO: 55 instructions were shortened
+BOLT-INFO: removed 25 empty blocks
+BOLT-INFO: patched build-id (flipped last bit)
+BOLT: 32 out of 50 functions were overwritten.
+BOLT-INFO: rewriting .eh_frame_hdr in-place
+BOLT-INFO: setting _end to 0x200ba8
